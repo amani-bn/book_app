@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/style.css"> -->
     <title>Document</title>
 </head>
 <body>
     <h1> Best Books!</h1>
     
     <form action="/searches" method="post">
-        <input type="text" placeholder="Search by title or authors" name="searchbox" >
+        <input class="input" type="text" placeholder="ُEnter a title or author" name="searchbox" >
         <br>
+        <fieldset class="title">
         <label for="Title">Title</label>
         <input type="radio" name="radioselect" value="Title">
+    </fieldset class="title">
         <br>
+        <fieldset class="author">
         <label for="Author">Author</label>
         <input type="radio" name="radioselect" value="Author">
+    </fieldset>
         <br>
-        <button type="submit">Search the google Books API</button>
+        <button id="but" type="submit">Search the google Books API</button>
     </form>
 </body>
 </html>

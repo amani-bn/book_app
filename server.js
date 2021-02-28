@@ -13,7 +13,7 @@ app.use(express.urlencoded({extended:true}));
 app.set('view engine','ejs');
 
 // localhost:3000/hello
-app.get('/',(req,res)=>{
+app.get('/hello',(req,res)=>{
 res.render('pages/index');
 })
 
@@ -25,7 +25,6 @@ app.get('/searches/new',(req,res)=>{
 app.post('/searches',(req,res) =>{
 let searchMethod=req.body.searchbox;
 let url;
-// let url =`//www.googleapis.com/books/v1/volumes?q=${searchMethod}+intitle`;
 if (req.body.radioselect === 'Title' ) {
  url = `https://www.googleapis.com/books/v1/volumes?q=${searchMethod}+intitle`;
 } else if(req.body.radioselect === 'Author') {
@@ -57,9 +56,14 @@ function Book(bookData) {
     this.authors=bookData.volumeInfo.authors || 'no Author';
     this.description=bookData.volumeInfo.description || 'no description';
 }
-// app.use('*', (req, res) => {
-//     res.status(404).send('page not found');
-//   })
+app.get('/', (req,res) => {
+    res.render('pages/index');
+})
+
+app.get('/error', (req,res) => {
+        res.status(500).send('Error in Route');
+           
+})
 app.listen(PORT,()=>{
     console.log(`Listening on PORT ${PORT}`);
 })
