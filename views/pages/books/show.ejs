@@ -4,25 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="/styles/reset.css">
-    <link rel="stylesheet" href="/styles/style.css"> -->
-    <title>Test</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1>Hello world </h1>
-    <a href="/">Home Route</a>
-    <a href="/searches/new">Search Route</a>
-    <!-- <a href="">Form </a>
-    <a href="">search</a> -->
-
-    <% booklist.forEach(book =>{  %>
+    <% task.forEach(book =>{  %>
         <div>
         <img src=<%=book.imgUrl %> alt="">
         <h2><%=book.title %></h2>
         <h3><%=book.authors %></h3>
         <p><%=book.description %></p>
-        <a href="/books/<%= book.id %>">View Details</a>
         <!-- <button>View details</button> -->
+        <a href="/detail/<%= book.id %>">View Details</a>
         </div>
         <% }) %>
 </body>

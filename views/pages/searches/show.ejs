@@ -10,13 +10,18 @@
 </head>
 <body>
     <header><h1>Best Books!</h1></header>
+   
         <% mylist.forEach(book =>{  %>
+         <form action="/addBook">
         <div>
         <img src=<%=book.imgUrl %> alt="">
         <h2><%=book.title %></h2>
         <h3><%=book.authors %></h3>
         <p><%=book.description %></p>
+        <a href="/books/<%= book.id %>">View Details</a>
+        <button type="submit">Add This Book</button>
         </div>
+    </form>
         <% }) %>
 </body>
 </html>
