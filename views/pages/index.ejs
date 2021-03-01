@@ -14,5 +14,19 @@
     <a href="/searches/new">Search Route</a>
     <!-- <a href="">Form </a>
     <a href="">search</a> -->
+
+    <% booklist.forEach(book =>{  %>
+        <div>
+        <img src=<%=book.image_url %> alt="">
+        <h2><%=book.title %></h2>
+        <h3><%=book.authors %></h3>
+        <p><%=book.description %></p>
+        <form action="/books/<%= book.id%>" method="GET">
+        <button type="submit">View Details</button>
+        <!-- <a href="/books/<%= book.id %>">View Details</a> -->
+        <!-- <button>View details</button> -->
+        </form>
+        </div>
+        <% }) %>
 </body>
 </html>
