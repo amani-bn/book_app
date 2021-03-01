@@ -7,14 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <% task.forEach(book =>{  %>
+    <% mylist.forEach(book =>{  %>
         <div>
-        <img src=<%=book.imgUrl %> alt="">
+        <img src=<%=book.image_url %> alt="">
         <h2><%=book.title %></h2>
         <h3><%=book.authors %></h3>
         <p><%=book.description %></p>
         <!-- <button>View details</button> -->
-        <a href="/detail/<%= book.id %>">View Details</a>
+        <!-- <a href="/detail/<%= book.id %>">View Details</a> -->
         </div>
         <% }) %>
 </body>

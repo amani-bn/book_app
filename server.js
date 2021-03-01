@@ -19,6 +19,7 @@ app.set('view engine','ejs');
 // res.render('pages/index');
 // })
 
+// home route
 app.get('/', (req,res) => {
     let SQL=`SELECT * FROM books;`;
     client.query(SQL)
@@ -30,6 +31,7 @@ app.get('/', (req,res) => {
 })
 })
 
+// 
 app.get('/books/:id',(req,res) => {
 
     let SQL = `SELECT * from books WHERE id=$1;`;
@@ -41,14 +43,17 @@ app.get('/books/:id',(req,res) => {
   })
 
 })
-app.post('/addBook',(req,res) =>{
-let SQL = `INSERT INTO books(author,title,isbn,image_url,description) VALUES ($1,$2,$3,$4,$5)RETURNING id;`;
+app.post('/addBooks',(req,res) =>{
+let SQL = `INSERT INTO books (author,title,isbn,image_url,description) VALUES ($1,$2,$3,$4,$5)RETURNING id;`;
   let value = req.body;
   let safeValues= [value.author,value.title,value.isbn,value.image_url,value.description];
   client.query(SQL,safeValues)
-  .then((result)=>{
-    console.log(result.rows);
-    res.redirect(`../show/${result.rows[0].id}`);
+  // .then((result)=>{
+  //   console.log(result.rows);
+  //   res.redirect(`../show/${result.rows[0].id}`);
+  // })
+  .then((result) =>{
+   res.redirect('/books/${result.rows[0].id}');
   })
 })
 
@@ -88,10 +93,12 @@ res.render('pages/searches/show',{mylist:booksArr});
 //Book constructor
 
 function Book(bookData) {
-    this.imgUrl =bookData.volumeInfo.imageLinks.thumbnail;
+    this.image_url =bookData.volumeInfo.imageLinks.thumbnail;
     this.title=bookData.volumeInfo.title || 'no title available for this Book';
     this.authors=bookData.volumeInfo.authors || 'no Author';
     this.description=bookData.volumeInfo.description || 'no description';
+    this.isbn=bookData.volumeInfo.industryIdentifiers[0].identifier || 'No ISBN';
+    
 }
 
 

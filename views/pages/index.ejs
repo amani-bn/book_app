@@ -17,12 +17,15 @@
 
     <% booklist.forEach(book =>{  %>
         <div>
-        <img src=<%=book.imgUrl %> alt="">
+        <img src=<%=book.image_url %> alt="">
         <h2><%=book.title %></h2>
         <h3><%=book.authors %></h3>
         <p><%=book.description %></p>
-        <a href="/books/<%= book.id %>">View Details</a>
+        <form action="/books/<%= book.id%>" method="GET">
+        <button type="submit">View Details</button>
+        <!-- <a href="/books/<%= book.id %>">View Details</a> -->
         <!-- <button>View details</button> -->
+        </form>
         </div>
         <% }) %>
 </body>

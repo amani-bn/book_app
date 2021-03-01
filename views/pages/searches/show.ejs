@@ -9,12 +9,12 @@
     <title>Show Books</title>
 </head>
 <body>
-    <header><h1>Best Books!</h1></header>
+    <!-- <header><h1>Best Books!</h1></header>
    
         <% mylist.forEach(book =>{  %>
          <form action="/addBook">
         <div>
-        <img src=<%=book.imgUrl %> alt="">
+        <img src=<%=book.image_url %> alt="">
         <h2><%=book.title %></h2>
         <h3><%=book.authors %></h3>
         <p><%=book.description %></p>
@@ -22,6 +22,27 @@
         <button type="submit">Add This Book</button>
         </div>
     </form>
-        <% }) %>
+        <!-- <% }) %>  -->
+
+        <% mylist.forEach(book => { %>
+            <section>
+               <img id="show" src="<%= book.image_url %>"> 
+               <h2 id="show"><%=book.title %></h2>
+               <h3 id="show"><%=book.author%></h3>
+               <p id="show"><%=book.description%></p>
+               <form id="show" action="/addBooks" method="post">
+                   <input type="hidden" name="image_url" value="<%= book.image_url%>">
+                   <input type="hidden" name="title" value="<%= book.title%>">
+                   <input type="hidden" name="author" value="<%= book.author%>">
+                   <input type="hidden" name="description" value="<%= book.description%>">
+                   <input type="hidden" name="isbn" value="<%= book.isbn%>">
+                   <button type="submit">Select Book</button>
+               </form></section>
+           
+       <% }) %>
+
+
+
+        
 </body>
 </html>
