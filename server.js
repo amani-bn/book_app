@@ -38,11 +38,11 @@ let booksArr=booksResult.body.items.map(element => new Book (element));
 
 res.render('pages/searches/show',{mylist:booksArr});
 })
-.catch(()=>{
-    app.use("*", (req, res) => {
-        res.status(500).send(errors);
-      })
-  })
+ .catch((errors)=>{
+     app.use("*", (req, res) => {
+         res.status(500).send(errors);
+       })
+   })
 })
 
 
