@@ -17,7 +17,7 @@ app.get('/hello',(req,res)=>{
 res.render('pages/index');
 })
 
-
+// localhost:3000/searches/new
 app.get('/searches/new',(req,res)=>{
  res.render('pages/searches/new');
 })
