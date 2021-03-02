@@ -52,8 +52,10 @@ let SQL = `INSERT INTO books (author,title,isbn,image_url,description) VALUES ($
   //   console.log(result.rows);
   //   res.redirect(`../show/${result.rows[0].id}`);
   // })
+  
   .then((result) =>{
-   res.redirect('/books/${result.rows[0].id}');
+    console.log(result.rows[0].id);
+   res.redirect(`/books/${result.rows[0].id}`);
   })
 })
 
@@ -68,9 +70,9 @@ app.post('/searches',(req,res) =>{
 let searchMethod=req.body.searchbox;
 let url;
 if (req.body.radioselect === 'Title' ) {
- url = `https://www.googleapis.com/books/v1/volumes?q=${searchMethod}+intitle`;
+ url = `https://www.googleapis.com/books/v1/volumes?q=+intitle:${searchMethod}`;
 } else if(req.body.radioselect === 'Author') {
-url =`https://www.googleapis.com/books/v1/volumes?q=${searchMethod}+inauthor`;
+url =`https://www.googleapis.com/books/v1/volumes?q=+inauthor:${searchMethod}`;
 }
 superagent.get (url)
 .then (booksResult =>{
@@ -93,11 +95,12 @@ res.render('pages/searches/show',{mylist:booksArr});
 //Book constructor
 
 function Book(bookData) {
-    this.image_url =bookData.volumeInfo.imageLinks.thumbnail;
+    this.image_url =(bookData.volumeInfo.imageLinks)?bookData.volumeInfo.imageLinks.thumbnail:`https://i.imgur.com/J5LVHEL.jpg`;
     this.title=bookData.volumeInfo.title || 'no title available for this Book';
-    this.authors=bookData.volumeInfo.authors || 'no Author';
+    this.author=(bookData.volumeInfo.authors)?bookData.volumeInfo.authors:'no Author';
     this.description=bookData.volumeInfo.description || 'no description';
-    this.isbn=bookData.volumeInfo.industryIdentifiers[0].identifier || 'No ISBN';
+    this.isbn=(bookData.volumeInfo.industryIdentifiers && bookData.volumeInfo.industryIdentifiers[0].type + '' +
+    bookData.volumeInfo.industryIdentifiers[0].identifier) || 'No ISBN';
     
 }
 
