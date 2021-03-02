@@ -29,7 +29,7 @@ app.get('/', (req,res) => {
     .then(result =>{
         // console.log(result.rows);
 
-        res.render('pages/index',{booklist:result.rows});
+        res.render('pages/index',{booklist:result.rows,bookcount:result.rowCount});
     
 })
 })
