@@ -4,28 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="/styles/reset.css">
-    <link rel="stylesheet" href="/styles/style.css"> -->
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/style.css">
+
     <title>Document</title>
 </head>
 <body>
-    <h1> Best Books!</h1>
+    <%- include('../../layout/header')  %>
     
-    <form action="/searches" method="post">
-        <input class="input" type="text" placeholder="ُEnter a title or author" name="searchbox" >
+    
+    <form  action="/searches" method="post">
+        <input id="input" type="text" placeholder="ُEnter a title or author" name="searchbox" >
         <br>
         <br>
         <fieldset class="title">
         <label for="Title">Title</label>
-        <input type="radio" name="radioselect" value="Title">
+        <input class="span" type="radio" name="radioselect" value="Title">
+        <br>
         <br>
     </fieldset>
         <fieldset class="author">
         <label for="Author">Author</label>
-        <input type="radio" name="radioselect" value="Author">
+        <input class="span" id ="tit" type="radio" name="radioselect" value="Author">
     </fieldset>
         <br>
-        <button id="but" type="submit">Search the google Books API</button>
+        <br>
+        <button class="span" id="butsearch" type="submit">Search the google Books API</button>
     </form>
+    <footer> <span class="dot"></span> <span class="dot"></span>
+        <span class="dot"></span> <span class="dot"></span>
+    </footer>
 </body>
 </html>

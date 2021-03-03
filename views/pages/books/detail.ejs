@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/style.css">
     <title>Document</title>
 </head>
 <body>
+
   
         <section>
         <img src=<%=task.image_url %> alt="">
@@ -14,16 +17,15 @@
         <h3><%=task.author %></h3>
         <p><%=task.description %></p>
         <h4><%=task.isbn%></h4>
-        <!-- <button>View details</button> -->
        </section>
         
        <form action="/deleteBook/<%= task.id %>?_method=delete" method="post">
-        <button>Delete Book</button>
+        <button class="delbtn">Delete Book</button>
       </form>
 
-       <button id="updateBtn">Show Update Form</button>
+       <button class="upbtn" id="updateBtn">Show Update Form</button>
        <section id="updateForm">
-        <h2>Update Task</h2>
+        <h2>Update Book</h2>
         <!--  updateBook/:id -->
         <form action="/updateBook/<%= task.id %>?_method=put" method="POST">
           <input type="text" name="author" value="<%= task.author  %>" >
@@ -31,7 +33,7 @@
           <input type="text" name="isbn" value="<%= task.isbn  %>">
           <input type="text" name="image_url" value="<%= task.image_url%>">
           <textarea name="description" cols="15" rows="10"><%= task.description%> </textarea>
-          <button>Update Book</button>
+          <button class="finalbtn">Update Book</button>
         </form>
       </section>
    
