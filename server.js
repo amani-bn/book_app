@@ -5,7 +5,17 @@ const superagent = require('superagent');
 // const ejs = require('ejs');
 const pg = require('pg');
 const methodOverride = require('method-override');
-const client = new pg.Client(process.env.DATABASE_URL);
+// if(PORT == 3000 || PORT == 3030)
+// { client = new pg.Client(process.env.DATABASE_URL);}
+//  else {client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });}
+
+
+
+
+
+const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
+
+
 
 const PORT = process.env.PORT || 3000;
 const app = express();
